@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  db:
+    image: world_db_mysql_8.0
+    # コンテナ名を設定
+    container_name: "world_db"
+    volumes:
+      # データ永続化
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    # ヘルスチェック
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
