@@ -14,3 +14,12 @@ services:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       timeout: 20s
       retries: 10
+  api:
+    image: world_api_node18.14-slim
+    # コンテナ名を設定
+    container_name: "world_api"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
