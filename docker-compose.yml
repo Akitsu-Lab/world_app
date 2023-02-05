@@ -23,3 +23,11 @@ services:
         condition: service_healthy
     ports:
       - "3001:3001"
+  ui:
+    image: world_ui_node18.14-slim
+    # コンテナ名を設定
+    container_name: "world_ui"
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
