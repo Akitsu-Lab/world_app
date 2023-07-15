@@ -40,3 +40,8 @@ world_app アプリの環境構築
   ```shell
   exit
   ```
+
+  - コンテナに入らなくてもログインできる
+  ```sh
+  mysql -u root -p --port=13306 --protocol=TCP
+  ```
